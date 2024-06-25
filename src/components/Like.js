@@ -1,9 +1,17 @@
 "use client";
 
-const Like = () => {
+import { PostContext } from "@/context/PostProvider";
+import { useContext } from "react";
+
+const Like = ({ post }) => {
+	const { setPostsLiked } = useContext(PostContext);
 	return (
 		<div>
-			<button onClick={() => console.log("like")}>Like</button>
+			<button
+				onClick={() => setPostsLiked((postsLiked) => [...postsLiked, post])}
+			>
+				Like
+			</button>
 		</div>
 	);
 };

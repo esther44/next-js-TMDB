@@ -1,8 +1,13 @@
+import PostProvider from "@/context/PostProvider";
+
 const RootLayout = ({ children }) => {
-	console.log("Root layout");
 	return (
 		<html>
-			<body>{children}</body>
+			<body>
+				<main>
+					<PostProvider>{children}</PostProvider>
+				</main>
+			</body>
 		</html>
 	);
 };

@@ -1,18 +1,19 @@
 import Like from "./Like";
+import Slide from "./Slideshow";
 
 const PostList = async () => {
 	const response = await fetch("https://jsonplaceholder.typicode.com/posts");
 	const posts = await response.json();
 
-	console.log(posts);
 	return (
 		<div>
 			{posts.map((post) => (
 				<div key={post.id}>
 					<p>{post.title}</p>
-					<Like></Like>
+					<Like post={post} />
 				</div>
 			))}
+			<Slide />
 		</div>
 	);
 };

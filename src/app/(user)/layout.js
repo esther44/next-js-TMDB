@@ -1,8 +1,8 @@
-const RootLayout = ({ childdren }) => {
+const RootLayout = ({ children }) => {
 	return (
 		<html>
 			<h1>User Group</h1>
-			<div>{childdren}</div>
+			<div>{children}</div>
 		</html>
 	);
 };

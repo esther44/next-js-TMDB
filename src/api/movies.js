@@ -1,20 +1,20 @@
-import { TMDBAPIURL, TMDBOptions } from "@/lib/constant";
+import { TMDBAPIURL, TMDBOptions, TMDB_API_KEY } from "@/lib/constant";
 
 let moviesCache = null;
-let moviesPromise = null;
 
 export const fetchMovies = async (token) => {
 	if (moviesCache) {
 		return moviesCache;
 	}
 
-	moviesPromise = new Promise(async (resolve, reject) => {
+	return new Promise(async (resolve, reject) => {
 		try {
 			const response = await fetch(`${TMDBAPIURL}movie/popular?page=1`, {
 				...TMDBOptions,
 				headers: {
 					...TMDBOptions.headers,
 					Authorization: `Bearer ${token}`,
+					api_key: TMDB_API_KEY,
 				},
 			});
 			if (!response.ok) {
@@ -28,6 +28,4 @@ export const fetchMovies = async (token) => {
 			reject(error);
 		}
 	});
-
-	return moviesPromise;
 };
