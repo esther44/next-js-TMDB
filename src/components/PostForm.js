@@ -18,8 +18,9 @@ const PostForm = () => {
 		})
 			.then((res) => res.json())
 			.then((post) => {
-				router.refresh();
-				router.push(`/posts/${post.id}`);
+				router.refresh(); // rerender server components
+				router.prefetch(`/posts/${post.id}`); // retrieve data before rendering
+				// router.push(`/posts/${post.id}`); // redirect to route
 			});
 	};
 	return (
